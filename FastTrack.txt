@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Task {
+    String name;
+    int time;
+
+    Task(String name, int time) {
+        this.name = name;
+        this.time = time;
+    }
+}
+
+public class FocusTrack {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Task> tasks = new ArrayList<>();
+
+        while (true) {
+            System.out.println("\n1. Add Task");
+            System.out.println("2. View Tasks");
+            System.out.println("3. Exit");
+            System.out.print("Choose: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            if (choice == 1) {
+                System.out.print("Enter task name: ");
+                String name = sc.nextLine();
+
+                System.out.print("Enter time (minutes): ");
+                int time = sc.nextInt();
+
+                tasks.add(new Task(name, time));
+                System.out.println("Task added!");
+
+            } else if (choice == 2) {
+                int total = 0;
+                for (Task t : tasks) {
+                    System.out.println("Task: " + t.name + " | Time: " + t.time + " minutes");
+                    total += t.time;
+                }
+                System.out.println("Total Study Time: " + total + " minutes");
+
+            } else if (choice == 3) {
+                break;
+
+            } else {
+                System.out.println("Invalid choice");
+            }
+        }
+
+        sc.close();
+    }
+}
